@@ -27,6 +27,8 @@ jobs:
     - stage: "Build Docker Image"
       name: "Build Images Docker" 
       script:
+      - travis env set DOCKER_USERNAME yogafdl
+      - travis env set DOCKER_PASSWORD inmonday25
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t travis-ci-build-stages-demo .
       - docker images
